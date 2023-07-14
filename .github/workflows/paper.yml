@@ -18,4 +18,5 @@ jobs:
           - 'paper.ipynb'
     - name: build the paper
       if: steps.filter.outputs.paper == 'true'
-      run: build-site.sh
+      run: ./build-site.sh
+      shell: bash
