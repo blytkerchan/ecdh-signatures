@@ -1,0 +1,21 @@
+name: Publish the paper
+
+on: [push, workflow_dispatch]
+
+jobs:
+  paths-filter:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          paper:
+          - 'paper.ipynb'
+    - name: build the paper
+      if: steps.filter.outputs.paper == 'true'
+      run: build-site.sh
