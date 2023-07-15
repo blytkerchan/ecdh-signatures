@@ -50,3 +50,8 @@ jobs:
     - name: build the wheel
       run: ./build-wheel.sh
       shell: bash
+    - uses: actions/upload-artifact@v3
+      with:
+        name: ecdh_signatures
+        path: dist/
+        if-no-files-found: error
