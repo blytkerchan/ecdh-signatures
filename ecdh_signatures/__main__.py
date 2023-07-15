@@ -53,7 +53,7 @@ def verify(args):
         sys.exit(0 if SigningHelper.verify(public_key, f, s) else 1)
 
 parser = argparse.ArgumentParser(
-                    prog='ecdh_signatures',
+                    prog='es',
                     description='Implements the ECDH signature protocol',
                     )
 subparsers = parser.add_subparsers(required=True)

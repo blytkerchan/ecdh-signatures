@@ -1,3 +1,9 @@
+[build-system]
+requires = [
+  "setuptools >= 40.9.0",
+]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "ecdhsignatures"
 version = "0.0.1"
@@ -6,6 +12,7 @@ dependencies = [
     "behave",
     "coverage",
     "cryptography",
+    "wheel",
     ]
 
 [project.scripts]
