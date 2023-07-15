@@ -3,7 +3,7 @@ name: Publish the paper
 on: [push, workflow_dispatch]
 
 jobs:
-  paths-filter:
+  build-paper:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
