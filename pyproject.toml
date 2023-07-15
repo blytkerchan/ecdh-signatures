@@ -1,0 +1,12 @@
+[project]
+name = "ecdhsignatures"
+version = "0.0.1"
+dependencies = [
+    "argparse",
+    "behave",
+    "coverage",
+    "cryptography",
+    ]
+
+[project.scripts]
+es = "ecdh_signatures:__main__"

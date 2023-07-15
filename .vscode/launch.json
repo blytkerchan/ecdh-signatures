@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Module generate",
+            "type": "python",
+            "request": "launch",
+            "module": "ecdh_signatures",
+            "args": ["generate", "-p", "password", "-k", "keyfile"],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Module sign",
+            "type": "python",
+            "request": "launch",
+            "module": "ecdh_signatures",
+            "args": ["sign", "-p", "password", "-k", "keyfile", "-o", "signature", "-f", "test_input.txt"],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Module extract",
+            "type": "python",
+            "request": "launch",
+            "module": "ecdh_signatures",
+            "args": ["extract", "-p", "password", "-k", "keyfile", "-o", "pubkey"],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Module verify",
+            "type": "python",
+            "request": "launch",
+            "module": "ecdh_signatures",
+            "args": ["verify", "-p", "pubkey", "-f", "test_input.txt", "-s", "signature"],
+            "justMyCode": true
+        }
+    ]
+}
