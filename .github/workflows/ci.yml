@@ -1,0 +1,52 @@
+name: CI
+
+on:
+ schedule:
+ - cron: 0 4 * * *
+ push:
+  branches:
+    - "*"
+ workflow_dispatch:
+  inputs:
+   release:
+    type:        boolean
+    description: 'Release candidate'
+    required:    true
+    default:     false
+   push:
+    type:        boolean
+    description: 'Push results'
+    required:    true
+    default:     false
+   daily:
+    type:        boolean
+    description: 'Run daily tasks'
+    required:    true
+    default:     true
+   weekly:
+    type:        boolean
+    description: 'Run weekly tasks'
+    required:    true
+    default:     false
+   monthly:
+    type:        boolean
+    description: 'Run monthly tasks'
+    required:    true
+    default:     false
+   minor:
+    type:        boolean
+    description: 'Force running minor tasks'
+    required:    true
+    default:     false
+
+jobs:
+  build-wheel:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: build the wheel
+      run: ./build-wheel.sh
+      shell: bash
