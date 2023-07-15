@@ -1,12 +1,12 @@
 [build-system]
 requires = [
-  "setuptools >= 40.9.0",
+  "setuptools >= 64.0.0",
 ]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ecdhsignatures"
-version = "0.0.1"
+name = "ecdh_signatures"
+version = "0.0.1-dev"
 dependencies = [
     "argparse",
     "behave",

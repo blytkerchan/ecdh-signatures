@@ -1,7 +1,7 @@
 .venv/
 _site/
 /.ipynb_checkpoints/**
-ecdhsignatures.egg-info/
+ecdh_signatures.egg-info/
 __pycache__/
 *.whl
 *.gz
