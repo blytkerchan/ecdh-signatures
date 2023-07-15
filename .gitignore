@@ -5,3 +5,7 @@ ecdhsignatures.egg-info/
 __pycache__/
 *.whl
 *.gz
+keyfile
+.gitignore
+signature
+pubkey
