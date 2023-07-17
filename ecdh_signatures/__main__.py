@@ -18,13 +18,13 @@ def extract(args):
     with open(args.output, 'x', encoding='utf-8') if args.output != '-' else sys.stdout as outp:
         key_pair.public_key().save(outp)
 
-def generate(args):
+def _generate(args):
     '''Generate a keypair'''
     curve = _CURVES[args.curve]
     key_pair = SigningHelper(curve).generate_keypair()
     key_pair.save(args.keyfile, args.password)
 
-def sign(args):
+def _sign(args):
     '''Sign something'''
     try:
         key_pair = KeyPair.load(args.keyfile, args.password)
@@ -38,7 +38,7 @@ def sign(args):
         ) if args.output != '-' else sys.stdout as outp:
         SigningHelper.sign(key_pair, inp, outp, args)
 
-def verify(args):
+def _verify(args):
     '''Verify the signature on something'''
     with open(args.pubkeyfile, 'r', encoding='utf-8') as pubkeyfile:
         public_key = PublicKey.load(pubkeyfile)
@@ -111,7 +111,7 @@ genparser.add_argument(
     type=str,
     required=True
     )
-genparser.set_defaults(func=generate)
+genparser.set_defaults(func=_generate)
 # sign command arguments
 signparser = subparsers.add_parser('sign')
 signparser.add_argument(
@@ -158,7 +158,7 @@ signparser.add_argument(
     default='sha256',
     choices=_HASH_ALGORITHMS.keys()
     )
-signparser.set_defaults(func=sign)
+signparser.set_defaults(func=_sign)
 # verify command arguments
 verifyparser = subparsers.add_parser('verify')
 verifyparser.add_argument(
@@ -185,7 +185,7 @@ verifyparser.add_argument(
     type=str,
     required=True,
     )
-verifyparser.set_defaults(func=verify)
+verifyparser.set_defaults(func=_verify)
 
 parsed_args = parser.parse_args(args=sys.argv[1:])
 parsed_args.func(parsed_args)

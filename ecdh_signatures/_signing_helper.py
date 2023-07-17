@@ -56,7 +56,7 @@ class SigningHelper:
         return m_prime
 
     @classmethod
-    def verify(cls, public_key, data, signature):
+    def verify(cls, public_key, data, signature, sha='sha256'):
         '''Verify a signature'''
         for line in signature.readlines():
             s = line.split('=', 1)
