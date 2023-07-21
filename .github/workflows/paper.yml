@@ -30,6 +30,6 @@ jobs:
           paper:
           - 'paper.ipynb'
     - name: build the paper
-      if: steps.filter.outputs.paper == 'true'
+      #if: steps.filter.outputs.paper == 'true'
       run: ./build-site.sh
       shell: bash
