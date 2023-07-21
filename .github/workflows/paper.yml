@@ -13,6 +13,16 @@ jobs:
     - uses: pandoc/actions/setup@main
       with:
         version: 2.19
+    - name: Install TeX Live
+      uses: zauguin/install-texlive@v2
+      with:
+        packages: >
+          latex latex-bin xetex tcolorbox pgf tools environ etoolbox pdfcol ltxcmds infwarerr iftex parskip caption
+          float xcolor geometry amsmath upquote eurosym ucs fontspec unicode-math fancyvrb grffile adjustbox hyperref
+          titling booktabs enumitem ulem soul kvoptions amsfonts metafont jknapltx
+    - name: install missing fonts for PDF generation
+      run: tlmgr install collection-fontsrecommended
+      shell: bash
     - uses: dorny/paths-filter@v2
       id: filter
       with:
