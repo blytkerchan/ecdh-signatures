@@ -17,3 +17,6 @@ dependencies = [
 
 [project.scripts]
 es = "ecdh_signatures:__main__"
+
+[tool.setuptools]
+py-modules = ["ecdh_kem"]
